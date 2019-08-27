@@ -91,7 +91,7 @@ export interface BraintreeVoidedEvent extends BraintreeStatusEvent {
 
 export interface BraintreeAuthorizedEvent extends BraintreeStatusEvent {
   status: BraintreeTransactionStatus.AUTHORIZED;
-  originDetails?: OriginDetails;
+  originResponse?: OriginDetails;
 }
 
 export interface BraintreeSettlementPendingEvent extends BraintreeStatusEvent {
@@ -101,30 +101,30 @@ export interface BraintreeSettlementPendingEvent extends BraintreeStatusEvent {
 
 export interface BraintreeFailedEvent extends BraintreeStatusEvent {
   status: BraintreeTransactionStatus.FAILED;
-  originDetails?: Partial<OriginDetails>;
+  originResponse?: Partial<OriginDetails>;
 }
 
 export interface BraintreeProcessorDeclinedEvent extends BraintreeStatusEvent {
   status: BraintreeTransactionStatus.PROCESSOR_DECLINED;
-  originDetails?: Partial<OriginDetails>;
+  originResponse?: Partial<OriginDetails>;
 }
 
 export interface BraintreeSettledEvent extends BraintreeStatusEvent {
   status: BraintreeTransactionStatus.SETTLED;
-  originDetails?: OriginDetails;
+  originResponse?: OriginDetails;
 }
 
 export interface BraintreeSettlementConfirmedEvent
   extends BraintreeStatusEvent {
   id: string;
   status: BraintreeTransactionStatus.SETTLEMENT_CONFIRMED;
-  originDetails: OriginDetails;
+  originResponse: OriginDetails;
 }
 
 export interface BraintreeSettlementDeclinedEvent extends BraintreeStatusEvent {
   id: string;
   status: BraintreeTransactionStatus.SETTLEMENT_DECLINED;
-  originDetails: OriginDetails;
+  originResponse: OriginDetails;
 }
 
 export interface BraintreeSubmittedForSettlementEvent
