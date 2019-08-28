@@ -19,7 +19,7 @@ TypeScript definitions for [Braintree](https://www.braintreepayments.com) [Custo
 > **Note:** This package is not yet available on [npm](https://www.npmjs.com).
 
 ```sh
-npm i -D git://github.com/braintree/braintree-types.git#semver:^0.0.1
+npm i -D git://github.com/braintree/braintree-types.git#semver:^0.1.0
 ```
 
 ## Usage
