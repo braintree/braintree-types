@@ -151,6 +151,7 @@ export interface BraintreeAutoTransitionBatchTransactionStatus {
 }
 
 export interface BraintreeOriginResponse {
+  id: string;
   code: string;
   message: string;
 }
