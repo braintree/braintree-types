@@ -60,6 +60,7 @@ export enum BraintreeTransactionType {
 export interface BraintreeTransactionStatusEvent {
   status: BraintreeTransactionStatus;
   originResponse?: BraintreeOriginResponse;
+  originDetails?: BraintreeOriginResponse;
 }
 
 export interface BraintreeEventHandlerResponse {
@@ -94,6 +95,7 @@ export interface BraintreeVoidedEvent extends BraintreeStatusEvent {
 export interface BraintreeAuthorizedEvent extends BraintreeStatusEvent {
   status: BraintreeTransactionStatus.AUTHORIZED;
   originResponse?: OriginDetails;
+  originDetails?: OriginDetails;
   customFields?: BraintreeCustomField[];
 }
 
@@ -106,18 +108,21 @@ export interface BraintreeSettlementPendingEvent extends BraintreeStatusEvent {
 export interface BraintreeFailedEvent extends BraintreeStatusEvent {
   status: BraintreeTransactionStatus.FAILED;
   originResponse?: Partial<OriginDetails>;
+  originDetails?: Partial<OriginDetails>;
   customFields?: BraintreeCustomField[];
 }
 
 export interface BraintreeProcessorDeclinedEvent extends BraintreeStatusEvent {
   status: BraintreeTransactionStatus.PROCESSOR_DECLINED;
   originResponse?: Partial<OriginDetails>;
+  originDetails?: Partial<OriginDetails>;
   customFields?: BraintreeCustomField[];
 }
 
 export interface BraintreeSettledEvent extends BraintreeStatusEvent {
   status: BraintreeTransactionStatus.SETTLED;
   originResponse?: OriginDetails;
+  originDetails?: OriginDetails;
   customFields?: BraintreeCustomField[];
 }
 
@@ -126,6 +131,7 @@ export interface BraintreeSettlementConfirmedEvent
   id: string;
   status: BraintreeTransactionStatus.SETTLEMENT_CONFIRMED;
   originResponse: OriginDetails;
+  originDetails: OriginDetails;
   customFields?: BraintreeCustomField[];
 }
 
@@ -133,6 +139,7 @@ export interface BraintreeSettlementDeclinedEvent extends BraintreeStatusEvent {
   id: string;
   status: BraintreeTransactionStatus.SETTLEMENT_DECLINED;
   originResponse: OriginDetails;
+  originDetails: OriginDetails;
   customFields?: BraintreeCustomField[];
 }
 
