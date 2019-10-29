@@ -14,7 +14,7 @@ export interface BraintreeTransaction {
     id: string;
     lineItems?: BraintreeLineItem[];
     orderId?: string;
-    originDetails?: OriginDetails;
+    originResponse?: OriginResponse;
     paymentMethodFields: BraintreePaymentMethodField[];
     processorId?: string;
     settlementBatchId?: string;
@@ -38,7 +38,7 @@ export interface ExternalTransaction {
     id?: string;
     lineItems?: BraintreeLineItem[];
     orderId?: string;
-    originDetails: OriginDetails;
+    originResponse: OriginResponse;
     processorId?: string;
     settlementBatchId?: string;
     shipping?: BraintreeAddress;
@@ -55,8 +55,7 @@ export declare enum BraintreeTransactionType {
 }
 export interface BraintreeTransactionStatusEvent {
     status: BraintreeTransactionStatus;
-    originResponse?: BraintreeOriginResponse;
-    originDetails?: BraintreeOriginResponse;
+    originResponse?: OriginResponse;
 }
 export interface BraintreeEventHandlerResponse {
     transactionStatusEvent?: StatusUnion;
@@ -76,8 +75,7 @@ export interface BraintreeVoidedEvent extends BraintreeStatusEvent {
 }
 export interface BraintreeAuthorizedEvent extends BraintreeStatusEvent {
     status: BraintreeTransactionStatus.AUTHORIZED;
-    originResponse?: OriginDetails;
-    originDetails?: OriginDetails;
+    originResponse?: OriginResponse;
     customFields?: BraintreeCustomField[];
 }
 export interface BraintreeSettlementPendingEvent extends BraintreeStatusEvent {
@@ -87,34 +85,29 @@ export interface BraintreeSettlementPendingEvent extends BraintreeStatusEvent {
 }
 export interface BraintreeFailedEvent extends BraintreeStatusEvent {
     status: BraintreeTransactionStatus.FAILED;
-    originResponse?: Partial<OriginDetails>;
-    originDetails?: Partial<OriginDetails>;
+    originResponse?: Partial<OriginResponse>;
     customFields?: BraintreeCustomField[];
 }
 export interface BraintreeProcessorDeclinedEvent extends BraintreeStatusEvent {
     status: BraintreeTransactionStatus.PROCESSOR_DECLINED;
-    originResponse?: Partial<OriginDetails>;
-    originDetails?: Partial<OriginDetails>;
+    originResponse?: Partial<OriginResponse>;
     customFields?: BraintreeCustomField[];
 }
 export interface BraintreeSettledEvent extends BraintreeStatusEvent {
     status: BraintreeTransactionStatus.SETTLED;
-    originResponse?: OriginDetails;
-    originDetails?: OriginDetails;
+    originResponse?: OriginResponse;
     customFields?: BraintreeCustomField[];
 }
 export interface BraintreeSettlementConfirmedEvent extends BraintreeStatusEvent {
     id: string;
     status: BraintreeTransactionStatus.SETTLEMENT_CONFIRMED;
-    originResponse: OriginDetails;
-    originDetails: OriginDetails;
+    originResponse: OriginResponse;
     customFields?: BraintreeCustomField[];
 }
 export interface BraintreeSettlementDeclinedEvent extends BraintreeStatusEvent {
     id: string;
     status: BraintreeTransactionStatus.SETTLEMENT_DECLINED;
-    originResponse: OriginDetails;
-    originDetails: OriginDetails;
+    originResponse: OriginResponse;
     customFields?: BraintreeCustomField[];
 }
 export interface BraintreeSubmittedForSettlementEvent extends BraintreeStatusEvent {
@@ -128,17 +121,12 @@ export interface BraintreeAutoTransitionBatchTransactionStatus {
     targetStatus: BraintreeTransactionStatus;
     transitionAtTimestamp: string;
 }
-export interface BraintreeOriginResponse {
-    id: string;
-    code: string;
-    message: string;
-}
 export interface BraintreeTransactionDescriptor {
     name?: string;
     phone?: string;
     url?: string;
 }
-export interface OriginDetails {
+export interface OriginResponse {
     id: string;
     message?: string;
     code?: string;
@@ -167,7 +155,7 @@ export interface BraintreeRefund {
     refundedTransaction: BraintreeTransaction;
     status: BraintreeTransactionStatus;
     processorId?: string;
-    originDetails?: OriginDetails;
+    originResponse?: OriginResponse;
 }
 export interface BraintreeCustomField {
     name: string;
