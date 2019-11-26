@@ -217,6 +217,7 @@ export interface BraintreeAsyncPayload {
 export declare enum BraintreeTransactionStatus {
     AUTHORIZED = "AUTHORIZED",
     AUTHORIZING = "AUTHORIZING",
+    AUTHORIZATION_EXPIRED = "AUTHORIZATION_EXPIRED",
     FAILED = "FAILED",
     GATEWAY_REJECTED = "GATEWAY_REJECTED",
     PROCESSOR_DECLINED = "PROCESSOR_DECLINED",
