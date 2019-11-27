@@ -1,3 +1,4 @@
+export declare type BraintreeTransactionOrRefund = BraintreeTransaction | BraintreeRefund;
 export interface BraintreeTransaction {
     /**
      * Dollar amount including cents represented as a `String`
@@ -156,6 +157,7 @@ export interface BraintreeRefund {
     status: BraintreeTransactionStatus;
     processorId?: string;
     originResponse?: OriginResponse;
+    type: BraintreeTransactionType;
 }
 export interface BraintreeCustomField {
     name: string;
