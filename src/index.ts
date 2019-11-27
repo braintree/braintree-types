@@ -1,3 +1,7 @@
+export type BraintreeTransactionOrRefund =
+  | BraintreeTransaction
+  | BraintreeRefund;
+
 export interface BraintreeTransaction {
   /**
    * Dollar amount including cents represented as a `String`
