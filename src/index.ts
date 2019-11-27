@@ -193,6 +193,7 @@ export interface BraintreeRefund {
   status: BraintreeTransactionStatus;
   processorId?: string;
   originResponse?: OriginResponse;
+  type: BraintreeTransactionType;
 }
 
 export interface BraintreeCustomField {
