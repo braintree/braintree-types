@@ -198,6 +198,9 @@ export interface BraintreeRefund {
   processorId?: string;
   originResponse?: OriginResponse;
   type: BraintreeTransactionType;
+  descriptor?: BraintreeTransactionDescriptor;
+  paymentMethodFields: BraintreePaymentMethodField[];
+  settlementBatchId?: string;
 }
 
 export interface BraintreeCustomField {
