@@ -200,6 +200,7 @@ export interface BraintreeRefund {
   type: BraintreeTransactionType;
   settlementBatchId?: string;
   paymentMethodFields: BraintreePaymentMethodField[];
+  descriptor?: BraintreeTransactionDescriptor;
 }
 
 export interface BraintreeCustomField {
