@@ -1,3 +1,8 @@
+export type BraintreeTransactionUnion =
+  | BraintreeTransaction
+  | BraintreeCredit
+  | BraintreeRefund;
+
 export type BraintreeTransactionOrRefund =
   | BraintreeTransaction
   | BraintreeRefund;
@@ -194,6 +199,25 @@ export interface BraintreeRefund {
   shipping?: BraintreeAddress;
   taxAmount?: string;
   refundedTransaction: BraintreeTransaction;
+  status: BraintreeTransactionStatus;
+  processorId?: string;
+  originResponse?: OriginResponse;
+  type: BraintreeTransactionType;
+  settlementBatchId?: string;
+  paymentMethodFields: BraintreePaymentMethodField[];
+  descriptor?: BraintreeTransactionDescriptor;
+}
+
+export interface BraintreeCredit {
+  id: string;
+  amount?: string;
+  billing?: BraintreeAddress;
+  currencyIsoCode?: string;
+  customer?: BraintreeCustomer;
+  orderId?: string;
+  shipping?: BraintreeAddress;
+  taxAmount?: string;
+  refundedTransaction?: BraintreeTransaction;
   status: BraintreeTransactionStatus;
   processorId?: string;
   originResponse?: OriginResponse;
