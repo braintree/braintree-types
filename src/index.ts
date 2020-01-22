@@ -7,13 +7,13 @@ export type BraintreeTransactionOrRefund =
   | BraintreeTransaction
   | BraintreeRefund;
 
-interface BraintreePaymentContext {
+export interface BraintreePaymentContext {
   amount: MonetaryAmount;
   fundingSource: string;
   customFields?: BraintreeCustomField[];
 }
 
-interface MonetaryAmount {
+export interface MonetaryAmount {
   value: string;
   currencyIsoCode: string;
 }
