@@ -7,6 +7,17 @@ export type BraintreeTransactionOrRefund =
   | BraintreeTransaction
   | BraintreeRefund;
 
+interface BraintreePaymentContext {
+  amount: MonetaryAmount;
+  fundingSource: string;
+  customFields?: BraintreeCustomField[];
+}
+
+interface MonetaryAmount {
+  value: string;
+  currencyIsoCode: string;
+}
+
 export interface BraintreeTransaction {
   /**
    * Dollar amount including cents represented as a `String`
@@ -76,6 +87,7 @@ export interface BraintreeEventHandlerResponse {
   transactionStatusEvents?: StatusUnion[];
   autoTransitionBatchTransactionStatus?: BraintreeAutoTransitionBatchTransactionStatus;
   importExternalTransaction?: BraintreeImportExternalTransaction;
+  paymentContext?: BraintreePaymentContext;
 }
 
 type StatusUnion =
