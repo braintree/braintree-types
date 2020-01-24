@@ -2,7 +2,6 @@ export declare type BraintreeTransactionUnion = BraintreeTransaction | Braintree
 export declare type BraintreeTransactionOrRefund = BraintreeTransaction | BraintreeRefund;
 export interface BraintreePaymentContext {
     amount: MonetaryAmount;
-    fundingSource: string;
     customFields?: BraintreeCustomField[];
 }
 export interface MonetaryAmount {
