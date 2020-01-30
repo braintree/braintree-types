@@ -148,7 +148,7 @@ export interface BraintreeSettlementDeclinedEvent extends BraintreeStatusEvent {
 export interface BraintreeSubmittedForSettlementEvent
   extends BraintreeStatusEvent {
   status: BraintreeTransactionStatus.SUBMITTED_FOR_SETTLEMENT;
-  settlementTimestamp: Date;
+  settlementTimestamp: Date | string;
   batchingStrategy?: BraintreeBatchingStrategy;
   customFields?: BraintreeCustomField[];
 }
