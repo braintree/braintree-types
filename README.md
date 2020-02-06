@@ -1,8 +1,8 @@
 # braintree-types
 
-> **Custom Actions** is still in preview, email functions-requests@braintreepayments.com to learn more.
+> **Custom Actions** is still in preview, email custom-actions-requests@braintreepayments.com to learn more.
 
-TypeScript definitions for [Braintree](https://www.braintreepayments.com) [Custom Actions](https://www.braintreepayments.com/features/serverless-connections) event handlers.
+TypeScript definitions for [Braintree](https://www.braintreepayments.com) [Custom Actions](https://github.com/braintree/custom-actions-docs) event handlers.
 
 <details>
 <summary><strong>Contents</strong></summary>
