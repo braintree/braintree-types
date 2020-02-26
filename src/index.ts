@@ -8,7 +8,6 @@ export type BraintreeTransactionOrRefund =
   | BraintreeRefund;
 
 export interface BraintreePaymentContext {
-  amount: MonetaryAmount;
   customFields?: BraintreeCustomField[];
 }
 
