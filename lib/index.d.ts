@@ -1,5 +1,8 @@
 export declare type BraintreeTransactionUnion = BraintreeTransaction | BraintreeCredit | BraintreeRefund;
 export declare type BraintreeTransactionOrRefund = BraintreeTransaction | BraintreeRefund;
+export interface BraintreePaymentContext {
+    customFields?: BraintreeCustomField[];
+}
 export interface BraintreeTransaction {
     /**
      * Dollar amount including cents represented as a `String`
@@ -64,6 +67,7 @@ export interface BraintreeEventHandlerResponse {
     transactionStatusEvents?: StatusUnion[];
     autoTransitionBatchTransactionStatus?: BraintreeAutoTransitionBatchTransactionStatus;
     importExternalTransaction?: BraintreeImportExternalTransaction;
+    paymentContext?: BraintreePaymentContext;
 }
 declare type StatusUnion = BraintreeVoidedEvent | BraintreeAuthorizedEvent | BraintreeSettlementPendingEvent | BraintreeFailedEvent | BraintreeProcessorDeclinedEvent | BraintreeSettledEvent | BraintreeSettlementConfirmedEvent | BraintreeSettlementDeclinedEvent | BraintreeSubmittedForSettlementEvent;
 interface BraintreeStatusEvent {
