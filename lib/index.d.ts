@@ -3,10 +3,6 @@ export declare type BraintreeTransactionOrRefund = BraintreeTransaction | Braint
 export interface BraintreePaymentContext {
     customFields?: BraintreeCustomField[];
 }
-export interface MonetaryAmount {
-    value: string;
-    currencyIsoCode: string;
-}
 export interface BraintreeTransaction {
     /**
      * Dollar amount including cents represented as a `String`
