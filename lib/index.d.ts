@@ -1,5 +1,9 @@
 export declare type BraintreeTransactionUnion = BraintreeTransaction | BraintreeCredit | BraintreeRefund;
 export declare type BraintreeTransactionOrRefund = BraintreeTransaction | BraintreeRefund;
+export declare type BraintreePaymentContextOrError = BraintreePaymentContext | HandlerError;
+export interface HandlerError {
+    message: string;
+}
 export interface BraintreePaymentContext {
     customFields?: BraintreeCustomField[];
 }
@@ -67,7 +71,7 @@ export interface BraintreeEventHandlerResponse {
     transactionStatusEvents?: StatusUnion[];
     autoTransitionBatchTransactionStatus?: BraintreeAutoTransitionBatchTransactionStatus;
     importExternalTransaction?: BraintreeImportExternalTransaction;
-    paymentContext?: BraintreePaymentContext;
+    paymentContextOrError?: BraintreePaymentContextOrError;
 }
 declare type StatusUnion = BraintreeVoidedEvent | BraintreeAuthorizedEvent | BraintreeSettlementPendingEvent | BraintreeFailedEvent | BraintreeProcessorDeclinedEvent | BraintreeSettledEvent | BraintreeSettlementConfirmedEvent | BraintreeSettlementDeclinedEvent | BraintreeSubmittedForSettlementEvent;
 interface BraintreeStatusEvent {
