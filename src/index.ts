@@ -7,6 +7,14 @@ export type BraintreeTransactionOrRefund =
   | BraintreeTransaction
   | BraintreeRefund;
 
+export type BraintreePaymentContextOrError =
+  | BraintreePaymentContext
+  | HandlerError;
+
+// A custom error to return from a Custom Actions handler
+export interface HandlerError {
+  message: string;
+}
 export interface BraintreePaymentContext {
   customFields?: BraintreeCustomField[];
 }
@@ -80,7 +88,7 @@ export interface BraintreeEventHandlerResponse {
   transactionStatusEvents?: StatusUnion[];
   autoTransitionBatchTransactionStatus?: BraintreeAutoTransitionBatchTransactionStatus;
   importExternalTransaction?: BraintreeImportExternalTransaction;
-  paymentContext?: BraintreePaymentContext;
+  paymentContextOrError?: BraintreePaymentContextOrError;
 }
 
 type StatusUnion =
