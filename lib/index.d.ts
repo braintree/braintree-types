@@ -1,11 +1,40 @@
 export declare type BraintreeTransactionUnion = BraintreeTransaction | BraintreeCredit | BraintreeRefund;
 export declare type BraintreeTransactionOrRefund = BraintreeTransaction | BraintreeRefund;
-export declare type BraintreePaymentContextOrError = BraintreePaymentContext | HandlerError;
+export declare type BraintreePaymentContextOrError = BraintreePaymentContextResult | HandlerError;
 export interface HandlerError {
     message: string;
 }
-export interface BraintreePaymentContext {
+export interface BraintreePaymentContextResult {
+    /** Custom fields to be written to the Payment Context */
     customFields?: BraintreeCustomField[];
+}
+export interface CreateBraintreePaymentContextInput {
+    /**
+     * Custom fields provided as input to a handler.
+     */
+    readonly customFields?: BraintreeCustomField[];
+}
+export interface BraintreeContextInput {
+    /** A readonly Braintree identifier used for correlation */
+    readonly id: string;
+    /**
+     * A String representing a date in [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) format
+     *
+     * This value CANNOT be changed.
+     */
+    readonly createdAt: string;
+    /**
+     * A String representing a date in [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) format
+     *
+     * This value CANNOT be changed.
+     */
+    readonly updatedAt: string;
+    /**
+     * Custom fields provided previously stored on a Payment Context.
+     *
+     * These values cannot be mutated.
+     */
+    readonly customFields?: BraintreeCustomField[];
 }
 export interface BraintreeTransaction {
     /**
