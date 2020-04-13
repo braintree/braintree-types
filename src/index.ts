@@ -28,7 +28,7 @@ export interface CreateBraintreePaymentContextInput {
   readonly customFields?: BraintreeCustomField[];
 }
 
-export interface BraintreeContextInput {
+export interface BraintreePaymentContextInput {
   /** A readonly Braintree identifier used for correlation */
   readonly id: string;
   /**
