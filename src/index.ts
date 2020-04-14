@@ -29,7 +29,7 @@ export interface CreateBraintreePaymentContextInput {
 }
 
 export interface BraintreePaymentContextInput {
-  /** A readonly Braintree identifier used for correlation */
+  /** A Braintree global id (https://graphql.braintreepayments.com/guides/node_query/) */
   readonly id: string;
   /**
    * A String representing a date in [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) format
@@ -49,6 +49,23 @@ export interface BraintreePaymentContextInput {
    * These values cannot be mutated.
    */
   readonly customFields?: BraintreeCustomField[];
+}
+
+export interface BraintreePaymentContext {
+  /** A Braintree global id (https://graphql.braintreepayments.com/guides/node_query/) */
+  id: string;
+  /**
+   * A String representing a date in [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) format
+   */
+  createdAt: string;
+  /**
+   * A String representing a date in [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) format
+   */
+  updatedAt: string;
+  /**
+   * Custom fields provided previously stored on a Payment Context.
+   */
+  customFields?: BraintreeCustomField[];
 }
 
 export interface BraintreeTransaction {
