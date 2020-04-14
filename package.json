@@ -1,6 +1,6 @@
 {
   "name": "braintree-types",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "description": "TypeScript definitions for Braintree Custom Actions",
   "types": "lib/index.d.ts",
   "typings": "lib/index.d.ts",
