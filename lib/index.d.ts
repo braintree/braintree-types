@@ -207,6 +207,7 @@ export interface BraintreeRefund {
     orderId?: string;
     shipping?: BraintreeAddress;
     taxAmount?: string;
+    lineItems?: BraintreeLineItem[];
     refundedTransaction: BraintreeTransaction;
     status: BraintreeTransactionStatus;
     processorId?: string;
