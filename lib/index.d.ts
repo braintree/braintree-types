@@ -1,8 +1,12 @@
 export declare type BraintreeTransactionUnion = BraintreeTransaction | BraintreeCredit | BraintreeRefund;
 export declare type BraintreeTransactionOrRefund = BraintreeTransaction | BraintreeRefund;
 export declare type BraintreePaymentContextOrError = BraintreePaymentContextResult | HandlerError;
+export declare type BraintreeCaptureBatchEventHandlerResponseOrError = Pick<BraintreeEventHandlerResponse, "transactionStatusEvents" | "autoTransitionBatchTransactionStatus"> | RecoverableError;
 export interface HandlerError {
     message: string;
+}
+export interface RecoverableError extends HandlerError {
+    recoverable: boolean;
 }
 export interface BraintreePaymentContextResult {
     /** Custom fields to be written to the Payment Context */
