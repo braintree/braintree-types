@@ -11,9 +11,21 @@ export type BraintreePaymentContextOrError =
   | BraintreePaymentContextResult
   | HandlerError;
 
+export type BraintreeCaptureBatchEventHandlerResponseOrError =
+  | Pick<
+      BraintreeEventHandlerResponse,
+      "transactionStatusEvents" | "autoTransitionBatchTransactionStatus"
+    >
+  | RecoverableError;
+
 // A custom error to return from a Custom Actions handler
 export interface HandlerError {
   message: string;
+}
+
+// A custom error to return from a Custom Actions handler that also states if the request can be recoverable or retried
+export interface RecoverableError extends HandlerError {
+  recoverable: boolean;
 }
 
 export interface BraintreePaymentContextResult {
