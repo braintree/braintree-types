@@ -283,6 +283,7 @@ export interface BraintreeLineItem {
     unitTaxAmount?: string;
     unitOfMeasure?: string;
     url?: string;
+    itemType: string;
 }
 export interface BraintreeAuthorizeResponse {
     orderId: string;
