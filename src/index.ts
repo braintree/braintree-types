@@ -89,8 +89,8 @@ export interface BraintreeTransaction {
   amount?: string;
   billing?: BraintreeAddress;
   currencyIsoCode?: string;
-  customFields?: BraintreeCustomField[];
   customer?: BraintreeCustomer;
+  customFields?: BraintreeCustomField[];
   descriptor?: BraintreeTransactionDescriptor;
   gatewayRejectionReason?: BraintreeTransactionRejectionReason;
   id: string;
@@ -263,24 +263,8 @@ export interface BraintreeAsyncFilePayloadInput {
   key: string;
 }
 
-export interface BraintreeRefund {
-  id: string;
-  amount?: string;
-  billing?: BraintreeAddress;
-  currencyIsoCode?: string;
-  customer?: BraintreeCustomer;
-  orderId?: string;
-  shipping?: BraintreeAddress;
-  taxAmount?: string;
-  lineItems?: BraintreeLineItem[];
+export interface BraintreeRefund extends BraintreeTransaction {
   refundedTransaction: BraintreeTransaction;
-  status: BraintreeTransactionStatus;
-  processorId?: string;
-  originResponse?: OriginResponse;
-  type: BraintreeTransactionType;
-  settlementBatchId?: string;
-  paymentMethodFields: BraintreePaymentMethodField[];
-  descriptor?: BraintreeTransactionDescriptor;
 }
 
 export interface BraintreeCredit {
@@ -395,6 +379,6 @@ export enum BraintreeAction {
   UPDATE = "UPDATE"
 }
 
-export enum BraintreeTransactionRejectionReason {
+export enumraintreeTransactionRejectionReason {
   FRAUD = "FRAUD"
 }
