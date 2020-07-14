@@ -202,24 +202,11 @@ export interface BraintreeAsyncFilePayloadInput {
     bucket: string;
     key: string;
 }
-export interface BraintreeRefund {
-    id: string;
-    amount?: string;
-    billing?: BraintreeAddress;
-    currencyIsoCode?: string;
-    customer?: BraintreeCustomer;
-    orderId?: string;
-    shipping?: BraintreeAddress;
-    taxAmount?: string;
-    lineItems?: BraintreeLineItem[];
+export interface BraintreeRefund extends BraintreeTransaction {
+    /**
+     * The original refunded transaction.
+     */
     refundedTransaction: BraintreeTransaction;
-    status: BraintreeTransactionStatus;
-    processorId?: string;
-    originResponse?: OriginResponse;
-    type: BraintreeTransactionType;
-    settlementBatchId?: string;
-    paymentMethodFields: BraintreePaymentMethodField[];
-    descriptor?: BraintreeTransactionDescriptor;
 }
 export interface BraintreeCredit {
     id: string;
