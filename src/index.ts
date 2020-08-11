@@ -161,6 +161,7 @@ type StatusUnion =
   | BraintreeSettledEvent
   | BraintreeSettlementConfirmedEvent
   | BraintreeSettlementDeclinedEvent
+  | BraintreeSettlingEvent
   | BraintreeSubmittedForSettlementEvent;
 
 interface BraintreeStatusEvent {
@@ -215,6 +216,12 @@ export interface BraintreeSettlementConfirmedEvent
 export interface BraintreeSettlementDeclinedEvent extends BraintreeStatusEvent {
   id: string;
   status: BraintreeTransactionStatus.SETTLEMENT_DECLINED;
+  originResponse: OriginResponse;
+  customFields?: BraintreeCustomField[];
+}
+export interface BraintreeSettlingEvent extends BraintreeStatusEvent {
+  id: string;
+  status: BraintreeTransactionStatus.SETTLING;
   originResponse: OriginResponse;
   customFields?: BraintreeCustomField[];
 }
