@@ -122,7 +122,7 @@ export interface BraintreeEventHandlerResponse {
     importExternalTransaction?: BraintreeImportExternalTransaction;
     paymentContextOrError?: BraintreePaymentContextOrError;
 }
-declare type StatusUnion = BraintreeVoidedEvent | BraintreeAuthorizedEvent | BraintreeSettlementPendingEvent | BraintreeFailedEvent | BraintreeProcessorDeclinedEvent | BraintreeSettledEvent | BraintreeSettlementConfirmedEvent | BraintreeSettlementDeclinedEvent | BraintreeSubmittedForSettlementEvent;
+declare type StatusUnion = BraintreeVoidedEvent | BraintreeAuthorizedEvent | BraintreeSettlementPendingEvent | BraintreeFailedEvent | BraintreeProcessorDeclinedEvent | BraintreeSettledEvent | BraintreeSettlementConfirmedEvent | BraintreeSettlementDeclinedEvent | BraintreeSettlingEvent | BraintreeSubmittedForSettlementEvent;
 interface BraintreeStatusEvent {
     id: string;
     status: BraintreeTransactionStatus;
@@ -166,6 +166,12 @@ export interface BraintreeSettlementConfirmedEvent extends BraintreeStatusEvent 
 export interface BraintreeSettlementDeclinedEvent extends BraintreeStatusEvent {
     id: string;
     status: BraintreeTransactionStatus.SETTLEMENT_DECLINED;
+    originResponse: OriginResponse;
+    customFields?: BraintreeCustomField[];
+}
+export interface BraintreeSettlingEvent extends BraintreeStatusEvent {
+    id: string;
+    status: BraintreeTransactionStatus.SETTLING;
     originResponse: OriginResponse;
     customFields?: BraintreeCustomField[];
 }
