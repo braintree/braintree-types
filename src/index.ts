@@ -272,7 +272,7 @@ export interface BraintreeAsyncFilePayloadInput {
 
 export interface BraintreeRefund extends BraintreeTransaction {
   /**
-   * The original refunded transaction.
+   * The newly refunded transaction.
    */
   refundedTransaction: BraintreeTransaction;
 }
