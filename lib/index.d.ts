@@ -281,6 +281,7 @@ export interface BraintreeLineItem {
     unitOfMeasure?: string;
     url?: string;
     itemType?: string;
+    imageUrl?: string;
 }
 export interface BraintreeAuthorizeResponse {
     orderId: string;
