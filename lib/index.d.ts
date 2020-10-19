@@ -75,12 +75,18 @@ export interface BraintreeTransaction {
     originResponse?: OriginResponse;
     paymentMethodFields: BraintreePaymentMethodField[];
     processorId?: string;
+    riskData?: BraintreeRiskData;
     settlementBatchId?: string;
     shipping?: BraintreeAddress;
     status: BraintreeTransactionStatus;
     statusEvent?: BraintreeTransactionStatusEvent;
     taxAmount?: string;
     type: BraintreeTransactionType;
+}
+export interface BraintreeRiskData {
+    customerBrowser?: string;
+    customerIp?: string;
+    deviceData?: string;
 }
 export interface BraintreeImportExternalTransaction {
     externalTransaction: ExternalTransaction;
