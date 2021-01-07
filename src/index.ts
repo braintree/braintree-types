@@ -325,6 +325,7 @@ export interface BraintreeCustomer {
   id?: string;
   phone?: string;
   website?: string;
+  taxId?: string;
 }
 
 // TODO: ensure optionality of these fields

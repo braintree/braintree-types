@@ -256,6 +256,7 @@ export interface BraintreeCustomer {
     id?: string;
     phone?: string;
     website?: string;
+    taxId?: string;
 }
 export interface BraintreeAddress {
     id?: string;
