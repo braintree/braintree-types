@@ -256,7 +256,18 @@ export interface BraintreeCustomer {
     id?: string;
     phone?: string;
     website?: string;
-    taxId?: string;
+    /** A set of country code ID pairs, analogous to Social Security numbers in the United States. */
+    /** A customer may have multiple national tax identifiers, but only one per country code. The values provided for an update will be stored and previous entries will be replaced. */
+    /** **You will only need to use these fields for processing in certain countries.** */
+    taxIdentifiers?: BraintreeTaxIdentifiers[];
+}
+/** The customer's tax identifer for a given country. */
+export interface BraintreeTaxIdentifiers {
+    /** The identifier provided in the format require for the given country. */
+    id: string;
+    /** The country code in ISO 3166-1 alpha-2 format. */
+    /** **Only a [subset of countries are supported](https://developers.braintreepayments.com/reference/general/countries/ruby#list-of-countries).** */
+    countryCode: string;
 }
 export interface BraintreeAddress {
     id?: string;
