@@ -260,6 +260,55 @@ export interface OriginResponse {
   message?: string;
   // Code returned by the processor for the status
   code?: string;
+  // Braintree CVV response code mapped from the processor's cvv response.
+  cvvResponseCode?: CvvResponseCode;
+}
+
+/**
+ * Braintree CVV response codes. Further documentation can be found here: https://developers.braintreepayments.com/reference/general/processor-responses/avs-cvv-responses#cvv
+ */
+export enum CvvResponseCode {
+  /**
+   * CVV matches
+   * The CVV provided matches the information on file with the cardholder's bank.
+   */
+  M = "M",
+
+  /**
+   * CVV does not match
+   * The CVV provided does not match the information on file with the cardholder's bank.
+   */
+  N = "N",
+
+  /**
+   * CVV is not verified
+   * The card-issuing bank received the CVV, but did not verify whether it was correct. This typically happens if the bank declines an authorization before evaluating the CVV.
+   */
+  U = "U",
+
+  /**
+   * CVV not provided
+   * No CVV was provided. This also happens if the transaction was made with a vaulted payment method. Learn more about AVS and CVV rules in the Vault.
+   */
+  I = "I",
+
+  /**
+   * Issuer does not participate
+   * The CVV was provided but the card-issuing bank does not participate in card verification.
+   */
+  S = "S",
+
+  /**
+   * CVV not applicable
+   * The CVV was provided but this type of transaction does not support card verification.
+   */
+  A = "A",
+
+  /**
+   * CVV skipped
+   * CVV checks were skipped for this transaction.
+   */
+  B = "B"
 }
 
 export interface BraintreeAsyncInput {
