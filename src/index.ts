@@ -179,59 +179,46 @@ interface BraintreeStatusEvent {
 
 export interface BraintreeVoidedEvent extends BraintreeStatusEvent {
   status: BraintreeTransactionStatus.VOIDED;
-  customFields?: BraintreeCustomField[];
   originResponse?: OriginResponse;
 }
 
 export interface BraintreeAuthorizedEvent extends BraintreeStatusEvent {
   status: BraintreeTransactionStatus.AUTHORIZED;
   originResponse?: OriginResponse;
-  customFields?: BraintreeCustomField[];
 }
 
 export interface BraintreeSettlementPendingEvent extends BraintreeStatusEvent {
-  id: string;
   status: BraintreeTransactionStatus.SETTLEMENT_PENDING;
-  customFields?: BraintreeCustomField[];
 }
 
 export interface BraintreeFailedEvent extends BraintreeStatusEvent {
   status: BraintreeTransactionStatus.FAILED;
   originResponse?: Partial<OriginResponse>;
-  customFields?: BraintreeCustomField[];
 }
 
 export interface BraintreeProcessorDeclinedEvent extends BraintreeStatusEvent {
   status: BraintreeTransactionStatus.PROCESSOR_DECLINED;
   originResponse?: Partial<OriginResponse>;
-  customFields?: BraintreeCustomField[];
 }
 
 export interface BraintreeSettledEvent extends BraintreeStatusEvent {
   status: BraintreeTransactionStatus.SETTLED;
   originResponse?: OriginResponse;
-  customFields?: BraintreeCustomField[];
 }
 
 export interface BraintreeSettlementConfirmedEvent
   extends BraintreeStatusEvent {
-  id: string;
   status: BraintreeTransactionStatus.SETTLEMENT_CONFIRMED;
   originResponse: OriginResponse;
-  customFields?: BraintreeCustomField[];
 }
 
 export interface BraintreeSettlementDeclinedEvent extends BraintreeStatusEvent {
-  id: string;
   status: BraintreeTransactionStatus.SETTLEMENT_DECLINED;
   originResponse: OriginResponse;
-  customFields?: BraintreeCustomField[];
 }
 export interface BraintreeSettlingEvent extends BraintreeStatusEvent {
-  id: string;
   status: BraintreeTransactionStatus.SETTLING;
   originResponse: OriginResponse;
-  customFields?: BraintreeCustomField[];
 }
 
 export interface BraintreeSubmittedForSettlementEvent
@@ -239,7 +226,6 @@ export interface BraintreeSubmittedForSettlementEvent
   status: BraintreeTransactionStatus.SUBMITTED_FOR_SETTLEMENT;
   settlementTimestamp?: Date | string;
   batchingStrategy?: BraintreeBatchingStrategy;
-  customFields?: BraintreeCustomField[];
 }
 
 export interface BraintreeAutoTransitionBatchTransactionStatus {
