@@ -137,6 +137,7 @@ interface BraintreeStatusEvent {
 export interface BraintreeVoidedEvent extends BraintreeStatusEvent {
     status: BraintreeTransactionStatus.VOIDED;
     customFields?: BraintreeCustomField[];
+    originResponse?: OriginResponse;
 }
 export interface BraintreeAuthorizedEvent extends BraintreeStatusEvent {
     status: BraintreeTransactionStatus.AUTHORIZED;
