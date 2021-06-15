@@ -97,6 +97,7 @@ export interface BraintreeTransaction {
   lineItems?: BraintreeLineItem[];
   orderId?: string;
   originResponse?: OriginResponse;
+  settlementOriginResponse?: OriginResponse;
   paymentMethodFields: BraintreePaymentMethodField[];
   processorId?: string;
   riskData?: BraintreeRiskData;
