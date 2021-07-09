@@ -422,6 +422,18 @@ export interface BraintreeAsyncPayload {
   transaction: BraintreeTransaction;
 }
 
+export interface BraintreeHandlerClientContextCustom {
+  braintreeRequestId?: string;
+}
+
+export interface BraintreeHandlerClientContext {
+  Custom?: BraintreeHandlerClientContextCustom;
+}
+
+export interface BraintreeHandlerContext {
+  clientContext?: BraintreeHandlerClientContext;
+}
+
 export enum BraintreeTransactionStatus {
   AUTHORIZED = "AUTHORIZED",
   AUTHORIZING = "AUTHORIZING",
