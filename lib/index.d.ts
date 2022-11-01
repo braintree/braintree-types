@@ -63,6 +63,7 @@ export interface BraintreeTransaction {
      * ex: "10.00"
      */
     amount: string;
+    amountAuthorized?: string;
     billing?: BraintreeAddress;
     currencyIsoCode: string;
     customFields?: BraintreeCustomField[];
