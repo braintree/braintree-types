@@ -373,4 +373,78 @@ export declare enum BraintreeAction {
 export declare enum BraintreeTransactionRejectionReason {
     FRAUD = "FRAUD"
 }
+/** The response type for a Custom Actions verification handler. */
+export interface BraintreeVerificationPayload {
+    result: BraintreeVerificationResult;
+}
+/** The possible results returned within a Braintree verification payload. */
+export declare type BraintreeVerificationResult = ProcessorDeclinedVerificationEvent | FailedVerificationEvent | VerifiedVerificationEvent | HandlerError;
+/** A generic verification status event. */
+export interface BraintreeVerificationStatusEvent {
+    /** The Braintree-mapped status set by the backing-processor to be returned to the Braintree Gateway. */
+    status: BraintreeVerificationStatus;
+    /** The Braintree-mapped detailed response for the verification attempt returned from the backing processor. */
+    originResponse?: BraintreeVerificationOriginResponse;
+}
+/** The raw details returned from the processor that can be stored on a verification. */
+export interface BraintreeVerificationOriginResponse {
+    /** Unique identifier for the veriication in a 3rd party system. */
+    id?: string;
+    /**
+     * A code returned by the processor for the status.
+     * This is an arbitrary field that can express different "codes" from processors. It does not necessarily map to any Braintree values.
+     */
+    code?: string;
+    /** The text explanation of the processor response code. */
+    message?: string;
+}
+/** A Braintree verification passed to a Custom Actions handler. */
+export interface BraintreeVerificationInput {
+    /** The amount to be verified. This will be a monetary amount that may include a decimal and up to 3 minor units. */
+    amount: string;
+    /** The currency [ISO-4217](https://en.wikipedia.org/wiki/ISO_4217) code to be used for the verification. */
+    currencyIsoCode: string;
+    /** The Braintree public id of the verification. */
+    id: string;
+    /**
+     * The response from a downstream verification.
+     *
+     * Typically, this is only populated for verifications with a status of `VERIFIED`.
+     */
+    originResponse?: BraintreeVerificationOriginResponse;
+    /** The current status of the verification. */
+    status: BraintreeVerificationStatus;
+}
+/** A Braintree verification status. */
+export declare enum BraintreeVerificationStatus {
+    /**
+     * The verification failed to be processed.
+     * Typically this represents an internal error in Braintree's systems.
+     */
+    FAILED = "FAILED",
+    /** The verification was rejected in the Braintree gateway before being sent to the processor. */
+    GATEWAY_REJECTED = "GATEWAY_REJECTED",
+    /** The verification was declined by the processor. */
+    PROCESSOR_DECLINED = "PROCESSOR_DECLINED",
+    /** The verification received a successful response from the processor.  */
+    VERIFIED = "VERIFIED",
+    /**
+     * The verification is being verified.
+     *
+     * This is the initial state of a verification.
+     */
+    VERIFYING = "VERIFYING"
+}
+/** A verification event used when the verification should be transitioned to a status of `PROCESSOR_DECLINED`. */
+export declare type ProcessorDeclinedVerificationEvent = BraintreeVerificationStatusEvent & {
+    status: BraintreeVerificationStatus.PROCESSOR_DECLINED;
+};
+/** A verification event used when the verification should be transitioned to a status of `VERIFIED` */
+export interface VerifiedVerificationEvent extends BraintreeVerificationStatusEvent {
+    status: BraintreeVerificationStatus.VERIFIED;
+}
+/** A verification event used when the verification should be transitioned to a status of `FAILED` */
+export interface FailedVerificationEvent extends BraintreeVerificationStatusEvent {
+    status: BraintreeVerificationStatus.FAILED;
+}
 export {};
