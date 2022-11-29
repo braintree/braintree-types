@@ -414,6 +414,34 @@ export interface BraintreeVerificationInput {
     originResponse?: BraintreeVerificationOriginResponse;
     /** The current status of the verification. */
     status: BraintreeVerificationStatus;
+    /**
+     * The fields containing card data. The following fields will be included:
+     *
+     * * `number` – The raw card number as a string
+     * * `expirationMonth` – A two digit string (01-12)
+     * * `expirationYear` – A four digit string
+     * * `brandCode` – Examples include "Mastercard", "Visa"
+     * * `accountType` – The type of card, typically `"credit"`, `"debit"`, or `"prepaid"`
+     * * `cvv` – The 3 or 4 digit security code as a string (this may not be present)
+     * * `cardholderName` – The first (given) and last (family) name of the card hodler
+     *
+     * and will typically be represented as:
+     *
+     * ```
+     * [
+     *   { "name": "number", "value": "4111111111111111" },
+     *   { "name": "expirationMonth", "value": "MM" },
+     *   { "name": "expirationYear", "value": "YYYY" },
+     *   { "name": "brandCode", "value": "Visa" },
+     *   { "name": "accountType", "value": "credit" },
+     *   { "name": "cvv", "value": "123" },
+     *   { "name": "cardholderName", "value": "John Doe" },
+     * ]
+     * ```
+     *
+     * > **Note:** These fields will not exist for the `voidCardVerification` mutation.
+     */
+    paymentMethodFields?: BraintreePaymentMethodField[];
 }
 /** A Braintree verification status. */
 export declare enum BraintreeVerificationStatus {
