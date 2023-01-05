@@ -378,7 +378,7 @@ export interface BraintreeVerificationPayload {
     result: BraintreeVerificationResult;
 }
 /** The possible results returned within a Braintree verification payload. */
-export declare type BraintreeVerificationResult = ProcessorDeclinedVerificationEvent | FailedVerificationEvent | VerifiedVerificationEvent | HandlerError;
+export declare type BraintreeVerificationResult = ProcessorDeclinedVerificationEvent | FailedVerificationEvent | VerifiedVerificationEvent | VoidedVerificationEvent | HandlerError;
 /** A generic verification status event. */
 export interface BraintreeVerificationStatusEvent {
     /** The Braintree-mapped status set by the backing-processor to be returned to the Braintree Gateway. */

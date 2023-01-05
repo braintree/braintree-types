@@ -474,6 +474,7 @@ export type BraintreeVerificationResult =
   | ProcessorDeclinedVerificationEvent
   | FailedVerificationEvent
   | VerifiedVerificationEvent
+  | VoidedVerificationEvent
   | HandlerError;
 
 /** A generic verification status event. */
