@@ -479,4 +479,8 @@ export interface VerifiedVerificationEvent extends BraintreeVerificationStatusEv
 export interface FailedVerificationEvent extends BraintreeVerificationStatusEvent {
     status: BraintreeVerificationStatus.FAILED;
 }
+/** A verification event used when the verification has been reversed */
+export interface VoidedVerificationEvent extends BraintreeVerificationStatusEvent {
+    status: BraintreeVerificationStatus.VOIDED;
+}
 export {};
