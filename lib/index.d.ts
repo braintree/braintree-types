@@ -461,7 +461,11 @@ export declare enum BraintreeVerificationStatus {
      *
      * This is the initial state of a verification.
      */
-    VERIFYING = "VERIFYING"
+    VERIFYING = "VERIFYING",
+    /**
+     * The verification hase been voided. This usually means a dollar-based auth has been reversed.
+     */
+    VOIDED = "VOIDED"
 }
 /** A verification event used when the verification should be transitioned to a status of `PROCESSOR_DECLINED`. */
 export declare type ProcessorDeclinedVerificationEvent = BraintreeVerificationStatusEvent & {
