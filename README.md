@@ -1,5 +1,7 @@
 # braintree-types
 
+# ⚠️ This package is now deprecated
+
 > **Custom Actions** is still in preview, email custom-actions-requests@braintreepayments.com to learn more.
 
 TypeScript definitions for [Braintree](https://www.braintreepayments.com) [Custom Actions](https://github.com/braintree/custom-actions-docs) event handlers.
